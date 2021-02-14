@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Game } from './Game';
 import { ToDo } from './Game/ToDo'
 import { NavBar } from './components/navBar'
+import { TextBox } from './components/input'
 import {
   BrowserRouter as Router,
   Switch,
@@ -114,7 +115,7 @@ class MathTable extends React.Component {
     
     return(
       <div>
-        {this.createTextBox()}
+        <TextBox value={this.state.unsavedInputVal || 0} onChange={this.handleChange} onSubmit={this.handleSubmit} />
         <StyledNavList>
           {results}
         </StyledNavList>
