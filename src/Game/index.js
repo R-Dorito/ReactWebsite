@@ -21,25 +21,18 @@ class Board extends React.Component {
   }
   
   render() {
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
+    const numRows = 3;
+    const numCols = 3;
+    const numBlocks = 0;
+    
+    for (var i = 0; i < numRows; i++){
+        for (var j = 0; j < numCols; j++){
+            return(<div>
+                {this.renderSquare(numBlocks)}
+            </div>);
+            
+        }
+    }
   }
 }
 
@@ -52,7 +45,7 @@ export class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
-      position: []
+      // position: []
     };
   }
 
@@ -67,10 +60,18 @@ export class Game extends React.Component {
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
 
+    var clickedPosition = this.getCoordinates(i, grid);
+
     this.setState(
       {
-        history: history.concat([{squares: squares}]),
-        position: [...this.state.position, this.getCoordinates(i, grid)],   
+        history: [
+          ...history, 
+          {
+            squares: squares,
+            position: clickedPosition
+          }
+        ],
+        // position: [...this.state.position, clickedPosition],   
         stepNumber: history.length,
         xIsNext: !this.state.xIsNext,
     });
@@ -106,14 +107,14 @@ export class Game extends React.Component {
     const winner = calculateWinner(current.squares);
     const position = this.state.position;
 
-    const currentPosition = position[position.length - 1];
-    debugger    
-    const moves = history.map((step, move) => {
+    // const currentPosition = position[position.length - 1];
+   
+    const moves = history.map((historyItem, move) => {
       const desc = move ? 'Got to move #' + move: 'Go to start game';
       return (
         <li key = {move}>
           <button onClick = {() => this.jumpTo(move)}>{desc}</button>
-          <div> {currentPosition} </div>
+          <div> {historyItem.position} </div>
         </li>
       );
     });
