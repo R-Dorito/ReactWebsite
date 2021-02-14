@@ -105,7 +105,7 @@ export class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-    const position = this.state.position;
+    //const position = this.state.position;
 
     // const currentPosition = position[position.length - 1];
    
