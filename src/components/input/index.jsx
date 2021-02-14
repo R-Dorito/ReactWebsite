@@ -9,7 +9,7 @@ export const TextBox = (props) => {
         <>
             <label >What multiply</label>
             <StyledDivInput>
-                <StyledInputBox type="text" name="randomValue" onChange={onChange} value={value} onKeyDown={(ev) => { if (ev.key === "Enter") onSubmit()}}/>
+                <StyledInputBox autoComplete="off" type="text" name="randomValue" onChange={onChange} value={value} onKeyDown={(ev) => { if (ev.key === "Enter") onSubmit()}}/>
                 <StyledInputSubmit type="button" value="Submit" onClick={onSubmit} />
             </StyledDivInput>
         </>

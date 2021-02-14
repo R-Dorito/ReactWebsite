@@ -25,24 +25,63 @@ export class MathTable extends React.Component
     this.setState({
       unsavedInputNumber: parseInt(event.target.value) || undefined
     })
-    if(event.target.value <= 999 && event.target.value >= 0){
-      this.setState({
-        textBoxError: !this.state.textBoxError
-      })
-    }
   }
 
   handleSubmit(event) {
     console.log("submitted");
     const { unsavedInputNumber, inputNumbers } = this.state;
-    if (unsavedInputNumber) {// && re.test(unsavedInputNumber)) {
+    const isInputDuplicated = this.checkDuplicates(unsavedInputNumber);
+
+    if (unsavedInputNumber && !isInputDuplicated) {// && re.test(unsavedInputNumber)) {
       this.setState({
         inputNumbers: [...inputNumbers, unsavedInputNumber],
+        unsavedInputNumber: '',
         display: true
+      })
+      this.moveToFrontOfArray();
+    } 
+    else if(isInputDuplicated){
+      this.bringToAttention(unsavedInputNumber)
+      this.setState({
+        unsavedInputNumber: '',
       })
     }
   }
   
+  //BIG HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  moveToFrontOfArray(){
+    const {inputNumbers} = this.state;
+    var newArray = inputNumbers.unshift(inputNumbers.pop());
+    console.log("NewArray" + newArray);
+    this.setState({
+      inputNumbers: newArray
+    })
+  }
+
+  checkDuplicates(value) {
+    if(this.state.inputNumbers.includes(value)){
+      return true;
+    } 
+    return false
+  }
+
+  bringToAttention(value){
+    const array = this.state.inputNumbers;
+    let newArr;
+
+    for (var i = 0; i < array.length; i++){
+      if(array[i] === value){
+        newArr = array.splice(i, 1);
+        array.unshift(newArr[0])
+
+        this.setState({
+          inputNumbers: array
+        });
+        break;
+      }
+    }
+  }
+
   drawTextBox() {
     return (
       <TextBox value={ this.state.unsavedInputNumber } onChange={this.handleChange} onSubmit={this.handleSubmit}/>
@@ -70,8 +109,11 @@ export class MathTable extends React.Component
   }
 
   removeArray(n){
-    const removed = this.state.inputNumbers.splice(n, 1);
-    return removed
+    const sliced = this.state.inputNumbers.slice();
+    sliced.splice(n, 1)
+    this.setState({
+      inputNumbers: sliced
+    })
   }
 
   render() {
@@ -88,10 +130,10 @@ export class MathTable extends React.Component
                 inputNumbers.map((num, i) => {
                   const n = i;
                   return (
-                    <StyledNavList>
+                    <StyledNavList >
                       <Exit>
-                        <Variable onClick = {this.removeArray(n)}>{num}</Variable>
-                        <Close >X</Close>
+                        <Variable>{num}</Variable>
+                        <Close onClick = {() => this.removeArray(n)}>X</Close>
                       </Exit>
                       
                       {this.multiplication(num)}

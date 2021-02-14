@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledNavList = styled.ul`
-  background-color: #e0f1f5;
+  background-color: ${props => props.isCurrent ? "#FFFF00" : "#e0f1f5"};
   // position: absolute;
   margin: 3px;
   padding: 0px 0px 10px 0px; 
@@ -10,6 +10,9 @@ export const StyledNavList = styled.ul`
   list-style-type: none;
   width: 200px;
   max-width: 200px;
+  transition: background-color 0.2s ease-in-out; 
+  transition: opacity 0.5s;
+  opacity: 1;
 `
 
 export const StyledListItem = styled.li`
