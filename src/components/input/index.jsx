@@ -5,12 +5,14 @@ export const TextBox = (props) => {
     const { value, onChange, onSubmit } = props;
     
     return(
-        <form onSubmit={onSubmit}>
-        <label htmlFor="box">What multiply</label>
-        <StyledDivInput>
-            <StyledInputBox id="box" type="text" name="randomValue" onChange={onChange} value={value} />
-            <StyledInputSubmit type="submit" value="Submit" />
-        </StyledDivInput>
-        </form>
+        //<form onSubmit={onSubmit}>
+        <>
+            <label >What multiply</label>
+            <StyledDivInput>
+                <StyledInputBox type="text" name="randomValue" onChange={onChange} value={value} onKeyDown={(ev) => { if (ev.key === "Enter") onSubmit()}}/>
+                <StyledInputSubmit type="button" value="Submit" onClick={onSubmit} />
+            </StyledDivInput>
+        </>
+        //</form>
     );
 }
