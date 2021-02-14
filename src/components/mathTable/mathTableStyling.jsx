@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const StyledNavList = styled.ul`
   background-color: #e0f1f5;
-  position: absolute;
+  // position: absolute;
+  margin: 3px;
   padding: 0px 0px 10px 0px; 
   border: 2px solid black;
   border-radius: 5px;
@@ -16,9 +17,15 @@ export const StyledListItem = styled.li`
   font: bold 15px Verdana, sans-serif;
   
 ` 
-export const MathBody = styled.div`
-
+export const MathBody = styled.div`  
 `
+
+export const BoxWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
 export const Exit = styled.div`
   display: flex;
   margin: 0px;
