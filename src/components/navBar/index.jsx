@@ -12,8 +12,8 @@ const StyledNav = styled.nav`
 `;
 
 const StyledNavList = styled.ul`
-  display: block;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding-left: 0px;
 `;
@@ -21,22 +21,31 @@ const StyledNavList = styled.ul`
 const StyledListItem = styled.li`
   //padding: 6px;
   position: relative;
-  display: block;
-  padding: 5px 0 5px 10px;
-  border-color: black;
-  border-style: ${(props) => (props.isActive ? "solid hidden" : null)};
-  background-color: ${(props) => (props.isActive ? "#5E6472" : null)};
+  display: flex;
+  flex-grow: 1;
+  margin: 2px 0;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   font: 15px Verdana, sans-serif;
-  color: ${(props) => (props.isOn ? "#ffffff" : "#000")};
+  color: ${(props) => (props.isActive ? "#ffffff" : "#000")};
+
+  display: flex;
+  flex-grow: 1;
+
+  padding: 5px 0 5px 10px;
+  border-color: ${(props) => (props.isActive ? "#000000" : "rgba(0,0,0,0)")};
+  border-style: solid hidden;
+  background-color: ${(props) =>
+    props.isActive ? "#5E6472" : "rgba(0,0,0,0)"};
+
+  transition: background-color 0.2s linear, border-color 0.2s linear,
+    color 0.2s linear;
 
   &:hover {
     //color: #FFA69E;
     text-decoration: underline;
-    transition: background-color 0.2s linear;
   }
 `;
 
@@ -47,18 +56,21 @@ const NavBarComponent = (props) => {
     <StyledNav>
       <StyledNavList>
         <StyledListItem isActive={pathname === "/"}>
-          <StyledLink to="/" isOn={pathname === "/"}>
+          <StyledLink to="/" isActive={pathname === "/"}>
             Home
           </StyledLink>
         </StyledListItem>
         <StyledListItem isActive={pathname === "/game"}>
-          <StyledLink to="/game" isOn={pathname === "/game"}>
+          <StyledLink to="/game" isActive={pathname === "/game"}>
             Game
           </StyledLink>
         </StyledListItem>
-        <StyledListItem isActive={pathname === "/users"}>
-          <StyledLink to="/users" isOn={pathname === "/users"}>
-            Users
+        <StyledListItem isActive={pathname === "/multiplication"}>
+          <StyledLink
+            to="/multiplication"
+            isActive={pathname === "/multiplication"}
+          >
+            Multiplication Tables
           </StyledLink>
         </StyledListItem>
       </StyledNavList>

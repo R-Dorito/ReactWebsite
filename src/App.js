@@ -2,7 +2,6 @@ import React from "react";
 //import styled from 'styled-components'
 
 import { Game } from "./Game";
-import { ToDo } from "./Game/ToDo";
 import { NavBar } from "./components/navBar";
 import { MathTable } from "./components/mathTable";
 
@@ -15,13 +14,13 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
+        <Route exact path="/"></Route>
         <Route path="/game">
           <Game />
         </Route>
-        <Route path="/users">
+        <Route path="/multiplication">
           <MathTable />
         </Route>
-        <Route path="/"></Route>
       </Switch>
     </Router>
   );

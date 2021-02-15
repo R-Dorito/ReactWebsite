@@ -42,6 +42,8 @@ export class MathTable extends React.Component {
     const { unsavedInputNumber, inputNumbers } = this.state;
 
     this.setState({
+      //add the new number to the start of the existing array
+      //remove the last number of the existing array
       inputNumbers: [
         unsavedInputNumber,
         ...inputNumbers.filter((num) => num !== unsavedInputNumber),
@@ -49,49 +51,6 @@ export class MathTable extends React.Component {
       display: true,
     });
   }
-  /*
-
-    // old stuff
-    const isInputDuplicated = this.checkDuplicates(unsavedInputNumber);
-    if (unsavedInputNumber && !isInputDuplicated) {
-      // && re.test(unsavedInputNumber)) {
-      this.setState({
-        inputNumbers: [...inputNumbers, unsavedInputNumber],
-        unsavedInputNumber: "",
-        display: true,
-      });
-    } else if (unsavedInputNumber && isInputDuplicated) {
-      this.bringToAttention(unsavedInputNumber);
-      this.setState({
-        unsavedInputNumber: "",
-      });
-    }
-    console.log(inputNumbers);
-    //this.reshuffle();
-
-    */
-
-  // checkDuplicates(value) {
-  //   if (this.state.inputNumbers.includes(value)) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
-  // bringToAttention(value) {
-  //   const array = this.state.inputNumbers;
-  //   let newArr;
-  //   for (var i = 0; i < array.length; i++) {
-  //     if (array[i] === value) {
-  //       newArr = array.splice(i, 1);
-  //       array.unshift(newArr[0]);
-  //       this.setState({
-  //         inputNumbers: array,
-  //       });
-  //       break;
-  //     }
-  //   }
-  // }
 
   createTextBox() {
     return (
