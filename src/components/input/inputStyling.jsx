@@ -6,8 +6,8 @@ export const StyledInputBox = styled.input`
     text-align: center;
     font: bold 25px Verdana, sans-serif;
     color: #4F6D7A;
-
-    &isActive{
+    
+    &:focus{
         
     }
 `
@@ -24,4 +24,7 @@ export const StyledInputSubmit = styled.input`
 export const StyledDivInput = styled.div`
     display: flex;
     justify-content: right;
+    margin-top:10px;
+    margin-bottom:10px;
+
 `

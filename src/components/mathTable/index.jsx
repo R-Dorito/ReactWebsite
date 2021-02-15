@@ -33,12 +33,14 @@ export class MathTable extends React.Component
     const isInputDuplicated = this.checkDuplicates(unsavedInputNumber);
 
     if (unsavedInputNumber && !isInputDuplicated) {// && re.test(unsavedInputNumber)) {
+      
       this.setState({
         inputNumbers: [...inputNumbers, unsavedInputNumber],
         unsavedInputNumber: '',
         display: true
       })
-      this.moveToFrontOfArray();
+
+      
     } 
     else if(isInputDuplicated){
       this.bringToAttention(unsavedInputNumber)
@@ -47,12 +49,11 @@ export class MathTable extends React.Component
       })
     }
   }
-  
+
   //BIG HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-  moveToFrontOfArray(){
-    const {inputNumbers} = this.state;
-    var newArray = inputNumbers.unshift(inputNumbers.pop());
-    console.log("NewArray" + newArray);
+  moveToFrontOfArray(newArray){
+    console.log("Line 57 " +  newArray)
+
     this.setState({
       inputNumbers: newArray
     })
@@ -130,7 +131,7 @@ export class MathTable extends React.Component
                 inputNumbers.map((num, i) => {
                   const n = i;
                   return (
-                    <StyledNavList >
+                    <StyledNavList draggable="true">
                       <Exit>
                         <Variable>{num}</Variable>
                         <Close onClick = {() => this.removeArray(n)}>X</Close>

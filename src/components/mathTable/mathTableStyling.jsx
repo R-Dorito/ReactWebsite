@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const StyledNavList = styled.ul`
-  background-color: ${props => props.isCurrent ? "#FFFF00" : "#e0f1f5"};
+  background-color: #e0f1f5;
   // position: absolute;
   margin: 3px;
+  margin-left: 0px;
   padding: 0px 0px 10px 0px; 
   border: 2px solid black;
   border-radius: 5px;
@@ -11,8 +12,14 @@ export const StyledNavList = styled.ul`
   width: 200px;
   max-width: 200px;
   transition: background-color 0.2s ease-in-out; 
-  transition: opacity 0.5s;
-  opacity: 1;
+  transform: translate(0px, 0px);
+
+
+  &:hover{
+    background-color: #aeebd3;
+    box-shadow: 10px 10px 8px #ced5d6;
+    transform: translate(-1px, -1px);
+  }
 `
 
 export const StyledListItem = styled.li`
@@ -42,7 +49,7 @@ export const Close = styled.h1`
   font:  20px Verdana, sans-serif;
   color: #4F6D7A;
   &:hover{
-    background-color: #FBB13C;
+    cursor: pointer;
     color: white;
   }
 `
