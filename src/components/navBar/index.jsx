@@ -1,61 +1,64 @@
-import React from 'react';
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-  
 
 const StyledNav = styled.nav`
+  float: left;
   padding: 1px;
-  background-color: rgb(245,245,245);
+  margin-right: 10px;
+  background-color: rgb(245, 245, 245);
+  height: 100vh;
+  width: 200px;
 `;
 
-
 const StyledNavList = styled.ul`
-  display: flex;
-  flex-direction: row;  
+  display: block;
+  flex-direction: row;
   list-style-type: none;
+  padding-left: 10px;
 `;
 
 const StyledListItem = styled.li`
-  padding: 6px;
-  background-color: ${ props => props.isActive ? "#DD6E42" : "#C0D6DF" };
-  opacity: 0.6;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  //padding: 6px;
+  position: relative;
+  display: block;
+  padding: 0 0 5px 1px;
 
-  &:hover {
-    opacity: 1;
-  }  
+  //background-color: ${(props) => (props.isActive ? "#DD6E42" : "#C0D6DF")};
 `;
 
 const StyledLink = styled(Link)`
-  color: #404040;
+  color: #777777;
   text-decoration: none;
-  &:visited {
-    text-decoration: none;
+
+  &:hover {
+    color: #000000;
+    font-weight: bold;
+    transition: background-color 0.2s linear;
   }
 `;
 
-
 const NavBarComponent = (props) => {
-    const { pathname } = props.location;
-    console.log(pathname === "/game")
-    return (
-      <StyledNav>
-        <StyledNavList>
-          <StyledListItem isActive={pathname === "/"}>
-            <StyledLink to="/">Home</StyledLink>
-          </StyledListItem>
-          <StyledListItem isActive={pathname === "/game"}>
-            <StyledLink to="/game">Game</StyledLink>
-          </StyledListItem>
-          <StyledListItem isActive={pathname === "/todo"}>
-            <StyledLink to="/todo">To Do List</StyledLink>
-          </StyledListItem>
-          <StyledListItem isActive={pathname === "/users"}>
-            <StyledLink to="/users">Users</StyledLink>
-          </StyledListItem>
-        </StyledNavList>
-      </StyledNav>
-    )
-  }
-  
-  export const NavBar = withRouter(NavBarComponent);
+  const { pathname } = props.location;
+  console.log(pathname === "/game");
+  return (
+    <StyledNav>
+      <StyledNavList>
+        <StyledListItem isActive={pathname === "/"}>
+          <StyledLink to="/">Home</StyledLink>
+        </StyledListItem>
+        <StyledListItem isActive={pathname === "/game"}>
+          <StyledLink to="/game">Game</StyledLink>
+        </StyledListItem>
+        <StyledListItem isActive={pathname === "/todo"}>
+          <StyledLink to="/todo">To Do List</StyledLink>
+        </StyledListItem>
+        <StyledListItem isActive={pathname === "/users"}>
+          <StyledLink to="/users">Users</StyledLink>
+        </StyledListItem>
+      </StyledNavList>
+    </StyledNav>
+  );
+};
+
+export const NavBar = withRouter(NavBarComponent);

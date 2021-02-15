@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './Game.css';
+//import './Game.css';
 
 function Square(props) {
   return (
@@ -9,7 +9,7 @@ function Square(props) {
     </button>
   );
 }
-  
+
 class Board extends React.Component {
   renderSquare(i) {
     return (
@@ -19,19 +19,16 @@ class Board extends React.Component {
       />
     );
   }
-  
+
   render() {
     const numRows = 3;
     const numCols = 3;
     const numBlocks = 0;
-    
-    for (var i = 0; i < numRows; i++){
-        for (var j = 0; j < numCols; j++){
-            return(<div>
-                {this.renderSquare(numBlocks)}
-            </div>);
-            
-        }
+
+    for (var i = 0; i < numRows; i++) {
+      for (var j = 0; j < numCols; j++) {
+        return <div>{this.renderSquare(numBlocks)}</div>;
+      }
     }
   }
 }
@@ -40,9 +37,11 @@ export class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [{
-        squares: Array(9).fill(null)
-      }],
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+      ],
       stepNumber: 0,
       xIsNext: true,
       // position: []
@@ -54,40 +53,39 @@ export class Game extends React.Component {
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     const grid = this.makeCoordinates();
-    
+
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.xIsNext ? "X" : "O";
 
     var clickedPosition = this.getCoordinates(i, grid);
 
-    this.setState(
-      {
-        history: [
-          ...history, 
-          {
-            squares: squares,
-            position: clickedPosition
-          }
-        ],
-        // position: [...this.state.position, clickedPosition],   
-        stepNumber: history.length,
-        xIsNext: !this.state.xIsNext,
+    this.setState({
+      history: [
+        ...history,
+        {
+          squares: squares,
+          position: clickedPosition,
+        },
+      ],
+      // position: [...this.state.position, clickedPosition],
+      stepNumber: history.length,
+      xIsNext: !this.state.xIsNext,
     });
   }
-  
-  jumpTo(step){
+
+  jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      xIsNext: step % 2 === 0,
     });
   }
-  
-  makeCoordinates(){
+
+  makeCoordinates() {
     let coordinates = [];
-    for(let a = 1; a <= 3; a++){
-      for(let b = 1; b <= 3; b++){
+    for (let a = 1; a <= 3; a++) {
+      for (let b = 1; b <= 3; b++) {
         coordinates.push({
           row: a,
           col: b,
@@ -96,11 +94,11 @@ export class Game extends React.Component {
     }
     return coordinates;
   }
-  
-  getCoordinates(i, array){
+
+  getCoordinates(i, array) {
     return "Clicked position: " + array[i].row + " " + array[i].col;
   }
-  
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -108,22 +106,22 @@ export class Game extends React.Component {
     //const position = this.state.position;
 
     // const currentPosition = position[position.length - 1];
-   
+
     const moves = history.map((historyItem, move) => {
-      const desc = move ? 'Got to move #' + move: 'Go to start game';
+      const desc = move ? "Got to move #" + move : "Go to start game";
       return (
-        <li key = {move}>
-          <button onClick = {() => this.jumpTo(move)}>{desc}</button>
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
           <div> {historyItem.position} </div>
         </li>
       );
     });
-    
+
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = "Winner: " + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
     return (
