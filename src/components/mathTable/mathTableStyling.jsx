@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledNavList = styled.ul`
-  background-color: #e0f1f5;
+  background-color: #faf3dd;
   // position: absolute;
   margin: 10px 5px 3px 0px;
 
@@ -15,8 +15,8 @@ export const StyledNavList = styled.ul`
   transform: translate(0px, 0px);
 
   &:hover {
-    background-color: #aeebd3;
-    box-shadow: 10px 10px 8px #ced5d6;
+    background-color: #ffdd76;
+    box-shadow: 5px 5px 8px #ced5d6;
     transform: translate(-1px, -1px);
     cursor: move;
   }
@@ -46,6 +46,7 @@ export const Close = styled.h1`
   padding: 2px;
   font: 20px Verdana, sans-serif;
   color: #4f6d7a;
+  font-weight: bold;
   &:hover {
     cursor: pointer;
     color: white;
@@ -65,6 +66,6 @@ export const SmallText = styled.div`
 export const MathHeader = styled.h1`
   margin: 0;
   padding: 0;
-  color: #969696;
-  font: bold 15px Verdana, sans-serif;
+  color: #000000;
+  font: bold 25px Verdana, sans-serif;
 `;

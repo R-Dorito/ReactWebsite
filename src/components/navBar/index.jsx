@@ -4,9 +4,9 @@ import { Link, withRouter } from "react-router-dom";
 
 const StyledNav = styled.nav`
   float: left;
-  padding: 1px;
   margin-right: 10px;
-  background-color: rgb(245, 245, 245);
+  background-color: #b8f2e6;
+  border-style: hidden solid hidden hidden;
   height: 100vh;
   width: 200px;
 `;
@@ -15,46 +15,51 @@ const StyledNavList = styled.ul`
   display: block;
   flex-direction: row;
   list-style-type: none;
-  padding-left: 10px;
+  padding-left: 0px;
 `;
 
 const StyledListItem = styled.li`
   //padding: 6px;
   position: relative;
   display: block;
-  padding: 0 0 5px 1px;
-
-  //background-color: ${(props) => (props.isActive ? "#DD6E42" : "#C0D6DF")};
+  padding: 5px 0 5px 10px;
+  border-color: black;
+  border-style: ${(props) => (props.isActive ? "solid hidden" : null)};
+  background-color: ${(props) => (props.isActive ? "#5E6472" : null)};
 `;
 
 const StyledLink = styled(Link)`
-  color: #777777;
   text-decoration: none;
+  font: 15px Verdana, sans-serif;
+  color: ${(props) => (props.isOn ? "#ffffff" : "#000")};
 
   &:hover {
-    color: #000000;
-    font-weight: bold;
+    //color: #FFA69E;
+    text-decoration: underline;
     transition: background-color 0.2s linear;
   }
 `;
 
 const NavBarComponent = (props) => {
   const { pathname } = props.location;
-  console.log(pathname === "/game");
+
   return (
     <StyledNav>
       <StyledNavList>
         <StyledListItem isActive={pathname === "/"}>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/" isOn={pathname === "/"}>
+            Home
+          </StyledLink>
         </StyledListItem>
         <StyledListItem isActive={pathname === "/game"}>
-          <StyledLink to="/game">Game</StyledLink>
-        </StyledListItem>
-        <StyledListItem isActive={pathname === "/todo"}>
-          <StyledLink to="/todo">To Do List</StyledLink>
+          <StyledLink to="/game" isOn={pathname === "/game"}>
+            Game
+          </StyledLink>
         </StyledListItem>
         <StyledListItem isActive={pathname === "/users"}>
-          <StyledLink to="/users">Users</StyledLink>
+          <StyledLink to="/users" isOn={pathname === "/users"}>
+            Users
+          </StyledLink>
         </StyledListItem>
       </StyledNavList>
     </StyledNav>
