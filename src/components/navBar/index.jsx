@@ -55,8 +55,8 @@ const NavBarComponent = (props) => {
   return (
     <StyledNav>
       <StyledNavList>
-        <StyledListItem isActive={pathname === "/"}>
-          <StyledLink to="/" isActive={pathname === "/"}>
+        <StyledListItem isActive={pathname === "/home"}>
+          <StyledLink to="/home" isActive={pathname === "/home"}>
             Home
           </StyledLink>
         </StyledListItem>
@@ -71,6 +71,11 @@ const NavBarComponent = (props) => {
             isActive={pathname === "/multiplication"}
           >
             Multiplication Tables
+          </StyledLink>
+        </StyledListItem>
+        <StyledListItem isActive={pathname === "/circleText"}>
+          <StyledLink to="/circleText" isActive={pathname === "/circleText"}>
+            Circle Text Maker
           </StyledLink>
         </StyledListItem>
       </StyledNavList>
