@@ -13,3 +13,7 @@ export const GlobalSubHeader = styled.h2`
   color: #2f3253;
   font: 20px Verdana, sans-serif;
 `;
+
+export const GlobalParagraph = styled.p`
+  font: 12px serif;
+`;

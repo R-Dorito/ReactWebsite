@@ -7,6 +7,11 @@ import { MathTable } from "./components/mathTable";
 import { Circle, CircleText } from "./components/circleNames";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  GlobalHeader,
+  GlobalSubHeader,
+  GlobalParagraph,
+} from "./components/globalStylings/global-headers-styling";
 
 const DivBody = styled.div`
   margin-top: 20px;
@@ -31,6 +36,12 @@ function App() {
         </Route>
         <Route path="/game">
           <DivBody>
+            <GlobalHeader>Tic Tac Toe</GlobalHeader>
+            <GlobalSubHeader>Tutorial: Intro to React</GlobalSubHeader>
+            <GlobalParagraph>
+              Original from:
+              https://reactjs.org/tutorial/tutorial.html#wrapping-up
+            </GlobalParagraph>
             <Game />
           </DivBody>
         </Route>

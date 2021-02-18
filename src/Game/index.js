@@ -1,6 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 
-//import './Game.css';
+import "./Game.css";
 
 function Square(props) {
   return (
@@ -23,22 +24,22 @@ class Board extends React.Component {
   render() {
     const numRows = 3;
     const numCols = 3;
-    const numBlocks = 0;
+    var numBlocks = 0;
     var squaresList = [];
+    var squareListInner = [];
 
     for (var i = 0; i < numRows; i++) {
       for (var j = 0; j < numCols; j++) {
-        squaresList.push(
-          <div>{this.renderSquare(numBlocks)}</div>
-        );
+        squareListInner.push(<div>{this.renderSquare(numBlocks++)}</div>);
       }
+      // add to list then clear squareListInner
+      squaresList.push(<div class="styledSquare">{squareListInner}</div>);
+      squareListInner = [];
+      console.log(squaresList);
     }
     return squaresList;
   }
 }
-
-const
-
 
 export class Game extends React.Component {
   constructor(props) {

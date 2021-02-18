@@ -1,5 +1,8 @@
 import React from "react";
-import { GlobalHeader, GlobalSubHeader } from "../globalStylings/headers";
+import {
+  GlobalHeader,
+  GlobalSubHeader,
+} from "../globalStylings/global-headers-styling";
 import { DrawCircle, CircleBody } from "./circle-styling";
 
 // used in App.js

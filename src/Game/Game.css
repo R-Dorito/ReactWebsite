@@ -31,9 +31,14 @@
   background: #ddd;
 }
 
+.styledSquare {
+  display: flex;
+}
+
 .game {
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
 }
 
 .game-info {

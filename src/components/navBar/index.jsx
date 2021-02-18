@@ -5,7 +5,7 @@ import {
   StyledNavList,
   StyledListItem,
   StyledLink,
-} from "../globalStylings/navigation";
+} from "../globalStylings/global-navigation-styling";
 
 const NavBarComponent = (props) => {
   const { pathname } = props.location;
@@ -20,7 +20,7 @@ const NavBarComponent = (props) => {
         </StyledListItem>
         <StyledListItem isActive={pathname === "/game"}>
           <StyledLink to="/game" isActive={pathname === "/game"}>
-            Game
+            Tic Tac Toe
           </StyledLink>
         </StyledListItem>
         <StyledListItem isActive={pathname === "/multiplication"}>
