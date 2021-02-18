@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TextBox } from "../input";
-import { GlobalHeader } from "../globalStylings";
+import { GlobalHeader } from "../globalStylings/headers";
 import {
   StyledNavList,
   StyledListItem,

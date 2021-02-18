@@ -14,7 +14,9 @@ const DivBody = styled.div`
   position: absolute;
   display: block;
   left: 230px;
-  width: 100%;
+  // This is primarily aimed at websites at the moment and not mobile
+  // The Nav bar is 230px
+  width: (100%) - 230px;
 `;
 
 function App() {
