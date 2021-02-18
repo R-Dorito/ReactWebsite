@@ -14,6 +14,7 @@ const DivBody = styled.div`
   position: absolute;
   display: block;
   left: 230px;
+  width: 100%;
 `;
 
 function App() {
