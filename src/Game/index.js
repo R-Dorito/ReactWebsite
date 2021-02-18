@@ -24,14 +24,21 @@ class Board extends React.Component {
     const numRows = 3;
     const numCols = 3;
     const numBlocks = 0;
+    var squaresList = [];
 
     for (var i = 0; i < numRows; i++) {
       for (var j = 0; j < numCols; j++) {
-        return <div>{this.renderSquare(numBlocks)}</div>;
+        squaresList.push(
+          <div>{this.renderSquare(numBlocks)}</div>
+        );
       }
     }
+    return squaresList;
   }
 }
+
+const
+
 
 export class Game extends React.Component {
   constructor(props) {

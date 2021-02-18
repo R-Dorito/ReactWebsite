@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TextBox } from "../input";
-import { GlobalHeader } from "../globalStylings/headers";
+import { GlobalHeader } from "../globalStylings/global-headers-styling";
 import {
   StyledNavList,
   StyledListItem,
@@ -11,7 +11,7 @@ import {
   Variable,
   BoxWrapper,
   SmallText,
-} from "./mathTableStyling";
+} from "./mathTable-styling";
 
 //const re = /^[0-9\b]+$/;
 

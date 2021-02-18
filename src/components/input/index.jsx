@@ -4,7 +4,7 @@ import {
   StyledInputBox,
   StyledInputSubmit,
   StyledDivInput,
-} from "./inputStyling";
+} from "./input-styling";
 
 const StyledTextBox = styled.div`
   margin: 0;
