@@ -4,13 +4,16 @@ import styled from "styled-components";
 import { Game } from "./Game";
 import { NavBar } from "./components/navBar";
 import { MathTable } from "./components/mathTable";
-import { CircleText } from "./components/circleNames";
+import { Circle, CircleText } from "./components/circleNames";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const DivBody = styled.div`
   margin-top: 20px;
   float: left;
+  position: absolute;
+  display: block;
+  left: 230px;
 `;
 
 function App() {
@@ -36,6 +39,7 @@ function App() {
         <Route path="/circleText">
           <DivBody>
             <CircleText />
+            <Circle />
           </DivBody>
         </Route>
       </Switch>
