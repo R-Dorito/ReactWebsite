@@ -63,9 +63,3 @@ export const SmallText = styled.div`
   padding: 0;
   margin: 0;
 `;
-export const MathHeader = styled.h1`
-  margin: 0;
-  padding: 0;
-  color: #000000;
-  font: bold 25px Verdana, sans-serif;
-`;

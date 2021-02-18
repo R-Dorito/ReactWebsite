@@ -1,6 +1,7 @@
 import React from "react";
 
 import { TextBox } from "../input";
+import { GlobalHeader } from "../globalStylings";
 import {
   StyledNavList,
   StyledListItem,
@@ -10,7 +11,6 @@ import {
   Variable,
   BoxWrapper,
   SmallText,
-  MathHeader,
 } from "./mathTableStyling";
 
 //const re = /^[0-9\b]+$/;
@@ -99,7 +99,7 @@ export class MathTable extends React.Component {
     const { inputNumbers } = this.state;
     return (
       <>
-        <MathHeader>Multiplication Table</MathHeader>
+        <GlobalHeader>Multiplication Table</GlobalHeader>
         <MathBody>
           {this.createTextBox()}
           {inputNumbers && inputNumbers.length > 0 ? (
