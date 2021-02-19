@@ -4,14 +4,15 @@ import styled from "styled-components";
 import { Game } from "./Game";
 import { NavBar } from "./components/navBar";
 import { MathTable } from "./components/mathTable";
-import { Circle, CircleText } from "./components/circleNames";
+import { Circle, CircleText } from "./components/coloredCircles";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   GlobalHeader,
   GlobalSubHeader,
   GlobalParagraph,
-} from "./components/globalStylings/global-headers-styling";
+  GlobalHyperlink,
+} from "./components/globalStylings/global-text-styling";
 
 const DivBody = styled.div`
   margin-top: 20px;
@@ -39,8 +40,10 @@ function App() {
             <GlobalHeader>Tic Tac Toe</GlobalHeader>
             <GlobalSubHeader>Tutorial: Intro to React</GlobalSubHeader>
             <GlobalParagraph>
-              Original from:
-              https://reactjs.org/tutorial/tutorial.html#wrapping-up
+              Original from
+              <GlobalHyperlink href="https://reactjs.org/tutorial/tutorial.html">
+                : https://reactjs.org/tutorial/tutorial.html
+              </GlobalHyperlink>
             </GlobalParagraph>
             <Game />
           </DivBody>

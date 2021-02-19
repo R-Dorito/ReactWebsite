@@ -33,7 +33,7 @@ const NavBarComponent = (props) => {
         </StyledListItem>
         <StyledListItem isActive={pathname === "/circleText"}>
           <StyledLink to="/circleText" isActive={pathname === "/circleText"}>
-            Circle Text Maker
+            Colored circles
           </StyledLink>
         </StyledListItem>
       </StyledNavList>

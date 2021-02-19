@@ -19,9 +19,9 @@ export const TextBox = (props) => {
       <StyledDivInput>
         <StyledInputBox
           autoComplete="off"
-          placeholder="Enter a Number"
           type="text"
-          name="randomValue"
+          name="textBox"
+          placeholder="Enter a number~"
           onChange={onChange}
           value={value}
           onKeyDown={(ev) => {

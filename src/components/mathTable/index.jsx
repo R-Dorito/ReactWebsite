@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TextBox } from "../input";
-import { GlobalHeader } from "../globalStylings/global-headers-styling";
+import { GlobalHeader } from "../globalStylings/global-text-styling";
 import {
   StyledNavList,
   StyledListItem,
@@ -31,9 +31,13 @@ export class MathTable extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-      unsavedInputNumber: parseInt(event.target.value) || undefined,
-    });
+    if (event.target.value > 999999999) {
+    } else {
+      this.setState({
+        unsavedInputNumber: parseInt(event.target.value) || undefined,
+      });
+    }
+
     //If this state is undefined -> turn the box red
   }
 
@@ -48,6 +52,7 @@ export class MathTable extends React.Component {
         unsavedInputNumber,
         ...inputNumbers.filter((num) => num !== unsavedInputNumber),
       ],
+      unsavedInputNumber: "",
       display: true,
     });
   }

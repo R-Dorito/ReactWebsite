@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import "./Game.css";
 
@@ -92,7 +91,7 @@ export class Game extends React.Component {
 
   makeCoordinates() {
     let coordinates = [];
-    for (let a = 1; a <= 3; a++) {
+    for (let a = 3; a >= 1; a--) {
       for (let b = 1; b <= 3; b++) {
         coordinates.push({
           row: a,
@@ -104,7 +103,7 @@ export class Game extends React.Component {
   }
 
   getCoordinates(i, array) {
-    return "Clicked position: " + array[i].row + " " + array[i].col;
+    return "x:" + array[i].col + " y:" + array[i].row;
   }
 
   render() {
