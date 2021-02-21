@@ -5,7 +5,12 @@ import {
   GlobalSubHeader,
 } from "../globalStylings/global-text-styling";
 import { GlobalDivSeperator } from "../globalStylings/global-div-styling";
-import { DrawCircle, ColorReturn } from "./circle-styling";
+import {
+  DrawCircle,
+  ColorReturn,
+  BigCircleSetWrapper,
+  CircleSet,
+} from "./circle-styling";
 
 // used in App.js
 export const CircleText = (props) => {
@@ -79,6 +84,18 @@ export class Circle extends React.Component {
     }
   }
 
+  generateRgb() {
+    return `rgb(${Math.round(Math.random() * 255 + 1)}, ${Math.round(
+      Math.random() * 255 + 1
+    )}, ${Math.round(Math.random() * 255 + 1)})`;
+  }
+
+  generateHsl() {
+    return `hsl(
+      ${Math.round(Math.random() * 360 + 1)}, 
+      ${Math.round(Math.random() * 100 + 1)}%, 20%)`;
+  }
+
   render() {
     var rgbCircles = [];
     var hslCircles = [];
@@ -91,17 +108,46 @@ export class Circle extends React.Component {
       hslCircles.push(<div>{this.createCircles("hsl")}</div>);
     }
 
+    const rgbColors = [];
+    const hslColors = [];
+
+    for (var n = 0; n < 256; n++) {
+      rgbColors.push(this.generateRgb());
+      hslColors.push(this.generateHsl());
+    }
+
     return (
       <>
         <GlobalSubHeader>Random circles</GlobalSubHeader>
-        <GlobalDivSeperator>
-          <GlobalParagraph>(Below) These are made using RGB</GlobalParagraph>
-          {rgbCircles}
-        </GlobalDivSeperator>
-        <GlobalDivSeperator>
-          <GlobalParagraph>(Below) These are made using HSL</GlobalParagraph>
-          {hslCircles}
-        </GlobalDivSeperator>
+        <BigCircleSetWrapper>
+          <GlobalDivSeperator>
+            <GlobalParagraph>(Below) These are made using RGB</GlobalParagraph>
+            {rgbCircles}
+          </GlobalDivSeperator>
+          <GlobalDivSeperator>
+            <GlobalParagraph>(Below) These are made using HSL</GlobalParagraph>
+            {hslCircles}
+          </GlobalDivSeperator>
+        </BigCircleSetWrapper>
+
+        <BigCircleSetWrapper>
+          <div>
+            <GlobalParagraph>(Below) These are made using RGB</GlobalParagraph>
+            <CircleSet columnCount={7}>
+              {rgbColors.map((color) => (
+                <DrawCircle colorCircle={color} />
+              ))}
+            </CircleSet>
+          </div>
+          <div>
+            <GlobalParagraph>(Below) These are made using HSL</GlobalParagraph>
+            <CircleSet>
+              {rgbColors.map((color) => (
+                <DrawCircle colorCircle={color} />
+              ))}
+            </CircleSet>
+          </div>
+        </BigCircleSetWrapper>
       </>
     );
   }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DrawCircle = styled.div`
   display: block;
-  margin: 0 10px 10px 0px;
+  //margin: 0 10px 10px 0px;
   //border: 5px solid #000000;
   background-color: ${(props) => props.colorCircle || "white"};
   border-radius: 100%;
@@ -34,4 +34,25 @@ export const CircleBody = styled.div`
 export const ColorReturn = styled.p`
   margin-top: 45%;
   font: 10px Verdana;
+`;
+
+export const BigCircleSetWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+export const CircleSet = styled.div`
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 10px;
+  grid-template-columns: ${(props) =>
+    `repeat(${props.columnCount || 5}, 100px)`};
+
+  transition: grid-gap 0.5s ease-in-out;
+
+  &:hover {
+    // grid-gap: 20px;
+  }
 `;
