@@ -13,8 +13,8 @@ const NavBarComponent = (props) => {
   return (
     <StyledNav>
       <StyledNavList>
-        <StyledListItem isActive={pathname === "/home"}>
-          <StyledLink to="/home" isActive={pathname === "/home"}>
+        <StyledListItem isActive={pathname === "/"}>
+          <StyledLink to="/" isActive={pathname === "/"}>
             Home
           </StyledLink>
         </StyledListItem>

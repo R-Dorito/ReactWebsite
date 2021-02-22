@@ -5,7 +5,7 @@ export const SmallCircleBody = styled.div`
   display: inline-grid;
   justify-items: left;
   grid-template-columns: 250px 500px;
-  height: 500px;
+  min-height: 500px;
 `;
 
 export const DrawSmallCircle = styled(DrawCircle)`
@@ -14,15 +14,15 @@ export const DrawSmallCircle = styled(DrawCircle)`
 `;
 
 export const SmallCircleSet = styled(CircleSet)`
-  grid-gap: 5px;
+  grid-gap: 10px;
   grid-template-columns: repeat(10, 10px);
 `;
 
 export const GraphBody = styled.div`
   position: relative;
   width: 500px;
-  height: 500px;
-  background-color: green;
+  height: inherit;
+  background-color: #dbdbdb;
   grid-column: 2/2;
   grid-row: 1;
 `;

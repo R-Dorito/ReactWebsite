@@ -15,7 +15,7 @@ export const ColorCircleText = () => {
   return (
     <>
       <GlobalHeader>Circle color distribution</GlobalHeader>
-      <GlobalSubHeader>Random circles</GlobalSubHeader>
+      <GlobalSubHeader>255 Random circles</GlobalSubHeader>
     </>
   );
 };

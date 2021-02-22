@@ -1,8 +1,35 @@
 import React from "react";
-import { GraphBody } from "./color-dist-styling";
+import { GraphBody, Line } from "./color-dist-styling";
 
 export class GraphMaker extends React.Component {
   render() {
-    return <GraphBody />;
+    var React = require("react");
+
+    var CanvasJSReact = require("../../canvasjs.react");
+    var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+    const options = {
+      title: {
+        text: "Basic Column Chart",
+      },
+      data: [
+        {
+          // Change type to "doughnut", "line", "splineArea", etc.
+          type: "column",
+          dataPoints: [
+            { label: "Apple", y: 10 },
+            { label: "Orange", y: 15 },
+            { label: "Banana", y: 25 },
+            { label: "Mango", y: 30 },
+            { label: "Grape", y: 28 },
+          ],
+        },
+      ],
+    };
+    return (
+      <div>
+        <CanvasJSChart options={options} />
+      </div>
+    );
   }
 }

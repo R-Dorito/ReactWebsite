@@ -8,6 +8,7 @@ export const StyledNav = styled.nav`
   border-style: hidden solid hidden hidden;
   height: 100vh;
   width: 200px;
+  position: fixed;
 `;
 
 export const StyledNavList = styled.ul`
