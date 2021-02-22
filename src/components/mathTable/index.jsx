@@ -5,7 +5,6 @@ import { GlobalHeader } from "../globalStylings/global-text-styling";
 import {
   StyledNavList,
   StyledListItem,
-  MathBody,
   Exit,
   Close,
   Variable,
@@ -105,30 +104,28 @@ export class MathTable extends React.Component {
     return (
       <>
         <GlobalHeader>Multiplication Table</GlobalHeader>
-        <MathBody>
-          {this.createTextBox()}
-          {inputNumbers && inputNumbers.length > 0 ? (
-            <BoxWrapper>
-              {inputNumbers.map((num, i) => {
-                const n = i;
-                return (
-                  <StyledNavList draggable="true">
-                    <Exit>
-                      <Variable>{num}</Variable>
-                      <Close onClick={() => this.removeMultiplicationCard(n)}>
-                        X
-                      </Close>
-                    </Exit>
+        {this.createTextBox()}
+        {inputNumbers && inputNumbers.length > 0 ? (
+          <BoxWrapper>
+            {inputNumbers.map((num, i) => {
+              const n = i;
+              return (
+                <StyledNavList draggable="true">
+                  <Exit>
+                    <Variable>{num}</Variable>
+                    <Close onClick={() => this.removeMultiplicationCard(n)}>
+                      X
+                    </Close>
+                  </Exit>
 
-                    {this.createMultiplicationCard(num)}
-                  </StyledNavList>
-                );
-              })}
-            </BoxWrapper>
-          ) : (
-            <SmallText>Enter a number to see the times tables!</SmallText>
-          )}
-        </MathBody>
+                  {this.createMultiplicationCard(num)}
+                </StyledNavList>
+              );
+            })}
+          </BoxWrapper>
+        ) : (
+          <SmallText>Enter a number to see the times tables!</SmallText>
+        )}
       </>
     );
   }

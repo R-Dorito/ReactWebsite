@@ -5,28 +5,25 @@ import {
   GlobalSubHeader,
 } from "../globalStylings/global-text-styling";
 import { GlobalDivSeperator } from "../globalStylings/global-div-styling";
-import {
-  DrawCircle,
-  ColorReturn,
-  BigCircleSetWrapper,
-  CircleSet,
-} from "./circle-styling";
+import { DrawCircle, ColorReturn, BigCircleSetWrapper } from "./circle-styling";
 
 // used in App.js
-export const CircleText = (props) => {
-  return <GlobalHeader>Here are some colored circles</GlobalHeader>;
+export const CircleText = () => {
+  return (
+    <>
+      <GlobalHeader>Here are some colored circles</GlobalHeader>
+      <GlobalSubHeader>Random circles</GlobalSubHeader>
+    </>
+  );
 };
 
 // used to draw circles
 export class Circle extends React.Component {
-  resetButton(isPressed) {}
-
   rgbGenerator() {
     var rgbValues = [];
     for (var i = 0; i < 3; i++) {
       rgbValues.push(Math.round(Math.random() * 255 + 1));
     }
-
     return rgbValues;
   }
 
@@ -84,18 +81,6 @@ export class Circle extends React.Component {
     }
   }
 
-  generateRgb() {
-    return `rgb(${Math.round(Math.random() * 255 + 1)}, ${Math.round(
-      Math.random() * 255 + 1
-    )}, ${Math.round(Math.random() * 255 + 1)})`;
-  }
-
-  generateHsl() {
-    return `hsl(
-      ${Math.round(Math.random() * 360 + 1)}, 
-      ${Math.round(Math.random() * 100 + 1)}%, 20%)`;
-  }
-
   render() {
     var rgbCircles = [];
     var hslCircles = [];
@@ -108,17 +93,8 @@ export class Circle extends React.Component {
       hslCircles.push(<div>{this.createCircles("hsl")}</div>);
     }
 
-    const rgbColors = [];
-    const hslColors = [];
-
-    for (var n = 0; n < 256; n++) {
-      rgbColors.push(this.generateRgb());
-      hslColors.push(this.generateHsl());
-    }
-
     return (
       <>
-        <GlobalSubHeader>Random circles</GlobalSubHeader>
         <BigCircleSetWrapper>
           <GlobalDivSeperator>
             <GlobalParagraph>(Below) These are made using RGB</GlobalParagraph>
@@ -128,25 +104,6 @@ export class Circle extends React.Component {
             <GlobalParagraph>(Below) These are made using HSL</GlobalParagraph>
             {hslCircles}
           </GlobalDivSeperator>
-        </BigCircleSetWrapper>
-
-        <BigCircleSetWrapper>
-          <div>
-            <GlobalParagraph>(Below) These are made using RGB</GlobalParagraph>
-            <CircleSet columnCount={7}>
-              {rgbColors.map((color) => (
-                <DrawCircle colorCircle={color} />
-              ))}
-            </CircleSet>
-          </div>
-          <div>
-            <GlobalParagraph>(Below) These are made using HSL</GlobalParagraph>
-            <CircleSet>
-              {rgbColors.map((color) => (
-                <DrawCircle colorCircle={color} />
-              ))}
-            </CircleSet>
-          </div>
         </BigCircleSetWrapper>
       </>
     );

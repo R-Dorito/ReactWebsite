@@ -26,7 +26,6 @@ export const StyledListItem = styled.li`
   padding: 0px 20px 0px 20px;
   font: bold 15px Verdana, sans-serif;
 `;
-export const MathBody = styled.div``;
 
 export const BoxWrapper = styled.div`
   display: flex;

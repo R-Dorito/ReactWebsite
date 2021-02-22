@@ -5,7 +5,7 @@ import {
   StyledNavList,
   StyledListItem,
   StyledLink,
-} from "../globalStylings/global-navigation-styling";
+} from "./navigation-styling";
 
 const NavBarComponent = (props) => {
   const { pathname } = props.location;
@@ -34,6 +34,11 @@ const NavBarComponent = (props) => {
         <StyledListItem isActive={pathname === "/circleText"}>
           <StyledLink to="/circleText" isActive={pathname === "/circleText"}>
             Colored circles
+          </StyledLink>
+        </StyledListItem>
+        <StyledListItem isActive={pathname === "/colorDis"}>
+          <StyledLink to="/colorDis" isActive={pathname === "/colorDis"}>
+            Distribution of colors
           </StyledLink>
         </StyledListItem>
       </StyledNavList>

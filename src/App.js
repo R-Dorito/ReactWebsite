@@ -5,6 +5,10 @@ import { Game } from "./Game";
 import { NavBar } from "./components/navBar";
 import { MathTable } from "./components/mathTable";
 import { Circle, CircleText } from "./components/coloredCircles";
+import {
+  ColorDistribution,
+  ColorCircleText,
+} from "./components/colorDistribution";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
@@ -57,6 +61,12 @@ function App() {
           <DivBody>
             <CircleText />
             <Circle />
+          </DivBody>
+        </Route>
+        <Route path="/colorDis">
+          <DivBody>
+            <ColorCircleText />
+            <ColorDistribution />
           </DivBody>
         </Route>
       </Switch>
