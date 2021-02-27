@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { DrawCircle, CircleSet } from "../coloredCircles/circle-styling";
 
+//This is the div that holds all the circles
 export const SmallCircleBody = styled.div`
   display: inline-grid;
   justify-items: left;
@@ -8,6 +9,7 @@ export const SmallCircleBody = styled.div`
   min-height: 500px;
 `;
 
+// Draw the circles
 export const DrawSmallCircle = styled(DrawCircle)`
   width: 10px;
   height: 10px;
