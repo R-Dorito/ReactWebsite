@@ -3,10 +3,10 @@ import { DrawCircle, CircleSet } from "../coloredCircles/circle-styling";
 
 //This is the div that holds all the circles
 export const SmallCircleBody = styled.div`
-  display: inline-grid;
+  display: block;
   justify-items: left;
   grid-template-columns: 250px 500px;
-  min-height: 500px;
+  min-height: 50px;
 `;
 
 // Draw the circles

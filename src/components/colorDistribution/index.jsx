@@ -2,14 +2,11 @@ import React from "react";
 import {
   GlobalHeader,
   GlobalSubHeader,
+  GlobalParagraph,
 } from "../globalStylings/global-text-styling";
 import { BigCircleSetWrapper } from "../coloredCircles/circle-styling.jsx";
-import {
-  SmallCircleBody,
-  DrawSmallCircle,
-  SmallCircleSet,
-} from "./color-dist-styling";
-import { GraphMaker, collectData } from "./graphMaker";
+import { SmallCircleBody, DrawSmallCircle } from "./color-dist-styling";
+
 export const ColorCircleText = () => {
   return (
     <>
@@ -38,6 +35,8 @@ export class ColorDistribution extends React.Component {
     var redArray = [];
     var blueArray = [];
     var greenArray = [];
+    var yellowArray = [];
+    var purpleArray = [];
     var other = [];
 
     for (var i = 0; i < 255; i++) {
@@ -47,23 +46,27 @@ export class ColorDistribution extends React.Component {
       //   Math.max(rgbColors[0], rgbColors[1], rgbColors[2])
       // );
       // if (color === 0) redArray.push(rgbColors);
-      // else if (color === 1) blueArray.push(rgbColors);
-      // else if (color === 2) greenArray.push(rgbColors);
+      // else if (color === 1) greenArray.push(rgbColors);
+      // else if (color === 2) blueArray.push(rgbColors);
 
-      if (rgbColors[0] > rgbColors[1] && rgbColors[0] > rgbColors[2])
-        redArray.push(rgbColors);
-      else if (rgbColors[1] > rgbColors[0] && rgbColors[1] > rgbColors[2])
+      if (rgbColors[0] > rgbColors[1] && rgbColors[0] > rgbColors[2]) {
+        let getAve = (rgbColors[0] + rgbColors[2]) / 2;
+        if (rgbColors[1] >= getAve) {
+          yellowArray.push(rgbColors);
+        } else redArray.push(rgbColors);
+      } else if (rgbColors[1] > rgbColors[0] && rgbColors[1] > rgbColors[2]) {
         greenArray.push(rgbColors);
-      else if (rgbColors[2] > rgbColors[1] && rgbColors[2] > rgbColors[0])
-        blueArray.push(rgbColors);
-      else other.push(rgbColors);
+      } else if (rgbColors[2] > rgbColors[1]) {
+        if (rgbColors[1] > rgbColors[0]) blueArray.push(rgbColors);
+        else if (rgbColors[0] > rgbColors[1]) purpleArray.push(rgbColors);
+      }
 
       rgbColors = [];
     }
     return (
-      <div>
-        <div>
-          <div>Red Colors:</div>
+      <BigCircleSetWrapper>
+        <SmallCircleBody>
+          <GlobalParagraph>Red Colors:</GlobalParagraph>
           {redArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -73,10 +76,11 @@ export class ColorDistribution extends React.Component {
               ></DrawSmallCircle>
             );
           })}
-        </div>
-        <div>
-          <div>Blue Colors:</div>
-          {blueArray.map((color) => {
+        </SmallCircleBody>
+
+        <SmallCircleBody>
+          <GlobalParagraph>Yellow Colors:</GlobalParagraph>
+          {yellowArray.map((color) => {
             return (
               <DrawSmallCircle
                 colorCircle={
@@ -85,9 +89,10 @@ export class ColorDistribution extends React.Component {
               ></DrawSmallCircle>
             );
           })}
-        </div>
-        <div>
-          <div>Green Colors:</div>
+        </SmallCircleBody>
+
+        <SmallCircleBody>
+          <GlobalParagraph>Green Colors:</GlobalParagraph>
           {greenArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -97,10 +102,11 @@ export class ColorDistribution extends React.Component {
               ></DrawSmallCircle>
             );
           })}
-        </div>
-        <div>
-          <div>Other Colors:</div>
-          {other.map((color) => {
+        </SmallCircleBody>
+
+        <SmallCircleBody>
+          <GlobalParagraph>Blue Colors:</GlobalParagraph>
+          {blueArray.map((color) => {
             return (
               <DrawSmallCircle
                 colorCircle={
@@ -109,8 +115,21 @@ export class ColorDistribution extends React.Component {
               ></DrawSmallCircle>
             );
           })}
-        </div>
-      </div>
+        </SmallCircleBody>
+
+        <SmallCircleBody>
+          <GlobalParagraph>Purple Colors:</GlobalParagraph>
+          {purpleArray.map((color) => {
+            return (
+              <DrawSmallCircle
+                colorCircle={
+                  "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")"
+                }
+              ></DrawSmallCircle>
+            );
+          })}
+        </SmallCircleBody>
+      </BigCircleSetWrapper>
     );
   }
 }

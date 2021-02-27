@@ -38,8 +38,9 @@ export const ColorReturn = styled.p`
 
 export const BigCircleSetWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  max-width: 500px;
 `;
 
 export const CircleSet = styled.div`
