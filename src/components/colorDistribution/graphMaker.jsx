@@ -1,35 +1,16 @@
 import React from "react";
 import { GraphBody, Line } from "./color-dist-styling";
 
+export const collectData = (colors) => {
+  console.log(colors);
+};
+
 export class GraphMaker extends React.Component {
-  render() {
-    var React = require("react");
-
-    var CanvasJSReact = require("../../canvasjs.react");
-    var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-
-    const options = {
-      title: {
-        text: "Basic Column Chart",
-      },
-      data: [
-        {
-          // Change type to "doughnut", "line", "splineArea", etc.
-          type: "column",
-          dataPoints: [
-            { label: "Apple", y: 10 },
-            { label: "Orange", y: 15 },
-            { label: "Banana", y: 25 },
-            { label: "Mango", y: 30 },
-            { label: "Grape", y: 28 },
-          ],
-        },
-      ],
-    };
-    return (
-      <div>
-        <CanvasJSChart options={options} />
-      </div>
-    );
+  getColorData() {
+    var data = this.props.colorData;
+    //breakup each string variable and get the three vaLUES
   }
+  // render() {
+  //   return data;
+  // }
 }

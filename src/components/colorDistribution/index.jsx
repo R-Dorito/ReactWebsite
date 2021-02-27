@@ -9,8 +9,7 @@ import {
   DrawSmallCircle,
   SmallCircleSet,
 } from "./color-dist-styling";
-import { GraphMaker } from "./graphMaker";
-
+import { GraphMaker, collectData } from "./graphMaker";
 export const ColorCircleText = () => {
   return (
     <>
@@ -22,25 +21,39 @@ export const ColorCircleText = () => {
 
 export class ColorDistribution extends React.Component {
   generateRgb() {
-    return `rgb(${Math.round(Math.random() * 255 + 1)}, ${Math.round(
-      Math.random() * 255 + 1
-    )}, ${Math.round(Math.random() * 255 + 1)})`;
+    var rgbColors = [];
+    var rgbArray = [];
+
+    for (var i = 0; i < 255; i++) {
+      for (var j = 0; j < 3; j++) {
+        rgbColors[j] = Math.round(Math.random() * 255 + 1);
+      }
+      rgbArray.push(rgbColors);
+      rgbColors = [];
+      console.log(rgbArray);
+    }
+    return rgbArray;
+  }
+
+  createListOfCircles() {
+    //going to break up the string here
   }
 
   render() {
-    const rgbColors = [];
+    //var rgbColors = this.createListOfCircles();
 
-    for (var n = 0; n < 256; n++) {
-      rgbColors.push(this.generateRgb());
-    }
+    // <SmallCircleBody>
+    //     <SmallCircleSet columnCount={7}>
+    //       {rgbColors.map((color) => (
+    //         <DrawSmallCircle colorCircle={color} />
+    //       ))}
+    //       {this.generateRgb()}
+    //     </SmallCircleSet>
+    //     <GraphMaker colorData={rgbColors} />
+    //   </SmallCircleBody>
     return (
       <SmallCircleBody>
-        <SmallCircleSet columnCount={7}>
-          {rgbColors.map((color) => (
-            <DrawSmallCircle colorCircle={color} />
-          ))}
-        </SmallCircleSet>
-        <GraphMaker />
+        <div>{this.generateRgb()}</div>
       </SmallCircleBody>
     );
   }
