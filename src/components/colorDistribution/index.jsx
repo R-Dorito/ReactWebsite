@@ -22,26 +22,21 @@ export class ColorDistribution extends React.Component {
     for (var j = 0; j < 3; j++) {
       rgbArray[j] = Math.round(Math.random() * 255 + 1);
     }
-    console.log(rgbArray);
     return rgbArray;
   }
 
-  createListOfCircles() {
-    //Collection of colors
-  }
+  createListOfCircles() {}
 
   render() {
-    var rgbColors;
+    var colors;
+    let colorsList = [];
     var redArray = [];
     var blueArray = [];
     var greenArray = [];
     var yellowArray = [];
     var purpleArray = [];
-    var other = [];
 
     for (var i = 0; i < 255; i++) {
-      rgbColors = this.generateRgb();
-
       // let color = rgbColors.indexOf(
       //   Math.max(rgbColors[0], rgbColors[1], rgbColors[2])
       // );
@@ -49,24 +44,46 @@ export class ColorDistribution extends React.Component {
       // else if (color === 1) greenArray.push(rgbColors);
       // else if (color === 2) blueArray.push(rgbColors);
 
-      if (rgbColors[0] > rgbColors[1] && rgbColors[0] > rgbColors[2]) {
-        let getAve = (rgbColors[0] + rgbColors[2]) / 2;
-        if (rgbColors[1] >= getAve) {
-          yellowArray.push(rgbColors);
-        } else redArray.push(rgbColors);
-      } else if (rgbColors[1] > rgbColors[0] && rgbColors[1] > rgbColors[2]) {
-        greenArray.push(rgbColors);
-      } else if (rgbColors[2] > rgbColors[1]) {
-        if (rgbColors[1] > rgbColors[0]) blueArray.push(rgbColors);
-        else if (rgbColors[0] > rgbColors[1]) purpleArray.push(rgbColors);
-      }
+      colors = this.generateRgb();
+      let c1 = colors[0];
+      let c2 = colors[1];
+      let c3 = colors[3];
 
-      rgbColors = [];
+      colorsList = colors.map((colors, i) => (
+        <div>
+          {colors}
+          <DrawSmallCircle
+            key={i}
+            colorCircle={"rgb(" + colors + "," + colors + "," + colors + ")"}
+          />
+        </div>
+      ));
+      console.log(colorsList);
+
+      if (colors[0] > colors[1] && colors[0] > colors[2]) {
+        let getAve = (colors[0] + colors[2]) / 2;
+        if (colors[1] >= getAve) {
+          yellowArray.push(colors);
+        } else redArray.push(colors);
+      } else if (colors[1] > colors[0] && colors[1] > colors[2]) {
+        greenArray.push(colors);
+      } else if (colors[2] > colors[1]) {
+        if (colors[1] > colors[0]) blueArray.push(colors);
+        else if (colors[0] > colors[1]) purpleArray.push(colors);
+      }
     }
     return (
       <BigCircleSetWrapper>
+        <div>
+          <GlobalParagraph>
+            Here is a random selection of colors
+          </GlobalParagraph>
+          <div>{colorsList}</div>
+        </div>
         <SmallCircleBody>
-          <GlobalParagraph>Red Colors:</GlobalParagraph>
+          <GlobalParagraph>
+            There are {redArray.length} Red Colors:
+          </GlobalParagraph>
           {redArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -79,7 +96,9 @@ export class ColorDistribution extends React.Component {
         </SmallCircleBody>
 
         <SmallCircleBody>
-          <GlobalParagraph>Yellow Colors:</GlobalParagraph>
+          <GlobalParagraph>
+            There are {yellowArray.length} Yellow Colors:
+          </GlobalParagraph>
           {yellowArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -92,7 +111,9 @@ export class ColorDistribution extends React.Component {
         </SmallCircleBody>
 
         <SmallCircleBody>
-          <GlobalParagraph>Green Colors:</GlobalParagraph>
+          <GlobalParagraph>
+            There are {greenArray.length} Green Colors:
+          </GlobalParagraph>
           {greenArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -105,7 +126,9 @@ export class ColorDistribution extends React.Component {
         </SmallCircleBody>
 
         <SmallCircleBody>
-          <GlobalParagraph>Blue Colors:</GlobalParagraph>
+          <GlobalParagraph>
+            There are {blueArray.length} Blue Colors:
+          </GlobalParagraph>
           {blueArray.map((color) => {
             return (
               <DrawSmallCircle
@@ -118,7 +141,9 @@ export class ColorDistribution extends React.Component {
         </SmallCircleBody>
 
         <SmallCircleBody>
-          <GlobalParagraph>Purple Colors:</GlobalParagraph>
+          <GlobalParagraph>
+            There are {purpleArray.length} Purple Colors:
+          </GlobalParagraph>
           {purpleArray.map((color) => {
             return (
               <DrawSmallCircle
